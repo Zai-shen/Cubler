@@ -1,6 +1,6 @@
 # Project
 
-Cubler is a simple 3D game made with Unity.
+Cubler (a wordplay between Cube and Hurdler) is a simple 3D game I made with Unity, for better understanding of Game Engines. 
 
 ![Cubler Screenshot](/Assets/Imgs/Cubler_512x512.png)
 
