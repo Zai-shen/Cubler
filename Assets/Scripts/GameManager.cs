@@ -91,6 +91,10 @@ public class GameManager : MonoBehaviour
                 Debug.Log("Credits");
                 audioManager.Play("Lvl0");
                 break;
+            case 5:
+                Debug.Log("ProceduralLevel");
+                audioManager.Play("ProceduralLevel");
+                break;
             default:
                 Debug.Log("Unknown");
                 break;

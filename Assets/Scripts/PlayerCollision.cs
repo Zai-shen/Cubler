@@ -6,6 +6,7 @@ public class PlayerCollision : MonoBehaviour
 {
 
     public PlayerMovement movement;
+    public ProceduralPlayerMovement pMovement;
     public Rigidbody playerRB;
 
     private void OnCollisionEnter(Collision collision)
@@ -14,7 +15,14 @@ public class PlayerCollision : MonoBehaviour
         if (collision.collider.tag == "Obstacle")
         {
             Debug.Log("Player hits: " + collision.collider.name);
-            movement.enabled = false;
+            if (movement)
+            {
+                movement.enabled = false;
+            }
+            else
+            {
+                pMovement.enabled = false;
+            }
             collision.rigidbody.useGravity = false;
             playerRB.useGravity = false;
             FindObjectOfType<AudioManager>().Play("PlayerCrashed");

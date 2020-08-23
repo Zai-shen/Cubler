@@ -4,10 +4,16 @@ using System;
 
 public class AudioManager : MonoBehaviour
 {
+    public bool mute;
     public Sound[] sounds;
 
     private void Awake()
     {
+        if (mute)
+        {
+            Debug.Log("Game is muted!");
+            return;
+        }
         foreach (Sound snd in sounds)
         {
             snd.source = gameObject.AddComponent<AudioSource>();
@@ -21,6 +27,10 @@ public class AudioManager : MonoBehaviour
 
     public void Play(string name)
     {
+        if (mute)
+        {
+            return;
+        }
         Sound snd = Array.Find(sounds, sound => sound.name == name);
         if (snd == null)
         {

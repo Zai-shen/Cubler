@@ -2,19 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class ProceduralPlayerMovement : MonoBehaviour
 {
     // This line does not only represent a variable, but also enables the input field to be shown in unity.
     public Rigidbody rb;
 
-    public float forwardSpeed;
-    public float sidewaysSpeed;
+    public float sidewaysSpeed = 500f;
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        // Exponential faster movement
-        rb.AddForce(0, 0, forwardSpeed * Time.deltaTime);
 
         // Instant response movement
         if (Input.GetKey("d"))
@@ -27,7 +24,7 @@ public class PlayerMovement : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.Space))
         {
-            rb.AddForce(0, 50f * Time.deltaTime, 0, ForceMode.VelocityChange);
+            rb.AddForce(0, sidewaysSpeed / 2 * Time.deltaTime, 0, ForceMode.VelocityChange);
         }
 
         if (rb.position.y < -1f)

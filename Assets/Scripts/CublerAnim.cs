@@ -7,6 +7,7 @@ public class CublerAnim : MonoBehaviour
 {
     public Text txt;
     bool growing;
+    private float dt;
 
     // Start is called before the first frame update
     void Start()
@@ -17,18 +18,23 @@ public class CublerAnim : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        dt += Time.deltaTime;
         if (txt.fontSize > 140 || txt.fontSize < 100)
         {
             // Debug.Log("Changed font growing to: " + growing);
             growing = !growing;
         }
-        if (!growing)
+        if (dt >= 0.01f)
         {
-            txt.fontSize -= 1;
-        }
-        else
-        {
-            txt.fontSize += 1;
+            dt -= 0.01f;
+            if (!growing)
+            {
+                txt.fontSize -= 1;
+            }
+            else
+            {
+                txt.fontSize += 1;
+            }
         }
     }
 }
