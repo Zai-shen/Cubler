@@ -109,7 +109,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey("r"))
+        if (Input.GetKey("r") || Input.GetKey(KeyCode.Return))
         {
             Restart();
         }
