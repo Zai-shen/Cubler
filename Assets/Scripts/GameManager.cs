@@ -30,6 +30,11 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
+    public void LoadLevel(string lvlName)
+    {
+        SceneManager.LoadScene(lvlName);
+    }
+
     public void LoadMenu()
     {
         SceneManager.LoadScene(0);

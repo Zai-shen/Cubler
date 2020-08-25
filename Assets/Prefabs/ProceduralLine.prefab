@@ -43,6 +43,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bbc96b842d19844fb2e6ae4f8b49946, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scoreTrigger: {fileID: 3268769484630570635, guid: 58285c99db936c6498ee2677e2dcb284,
+    type: 3}
   enemyLine: {fileID: 9010376728623164198, guid: 9e853f6b0aa979e40870f05700c4f3f1,
     type: 3}
   lineSpeed: 100

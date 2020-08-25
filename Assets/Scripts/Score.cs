@@ -32,8 +32,6 @@ public class Score : MonoBehaviour
     {
         if (procedural)
         {
-            //JUST TESTING TODO
-            score = player.position.x;
             scoreTxt.text = score.ToString("0");
         }
         else
@@ -60,9 +58,15 @@ public class Score : MonoBehaviour
         }
     }
 
+    public void increaseScore(float amount)
+    {
+        score += amount;
+    }
+
     public void ResetHighScore()
     {
         PlayerPrefs.DeleteKey("HighScore");
+        highScoreTxt.text = "0";
     }
 
     private void HighlightHighScore()

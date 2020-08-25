@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class ProceduralLine : MonoBehaviour
 {
+    public GameObject scoreTrigger;
     public GameObject enemyLine;
     private GameObject lineLeft;
+    private GameObject lineMiddle;
     private GameObject lineRight;
     private List<GameObject> lineObjects = new List<GameObject>();
 
@@ -33,6 +35,11 @@ public class ProceduralLine : MonoBehaviour
         lineLeft.transform.localScale = new Vector3(widthLeft, lineLeft.transform.localScale.y, lineLeft.transform.localScale.z);
         lineObjects.Add(lineLeft);
 
+        //Score trigger
+        lineMiddle = Instantiate(scoreTrigger, new Vector3((-totalLineWidth / 2) + widthLeft + (midSpace / 2), transform.position.y, transform.position.z + 1), Quaternion.identity);
+        lineMiddle.transform.localScale = new Vector3(midSpace, lineMiddle.transform.localScale.y, lineMiddle.transform.localScale.z);
+        lineObjects.Add(lineMiddle);
+
         //Right side
         float widthRight = totalLineWidth - widthLeft - midSpace;
         lineRight = Instantiate(enemyLine, new Vector3((totalLineWidth / 2) - (widthRight / 2), transform.position.y, transform.position.z), Quaternion.identity);
@@ -44,7 +51,9 @@ public class ProceduralLine : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Gizmos.color = Color.red;
+        Color redSeeThrough = Color.red;
+        redSeeThrough.a = 0.5f;
+        Gizmos.color = redSeeThrough;
         Gizmos.DrawCube(transform.position,new Vector3(totalLineWidth!=0?totalLineWidth:16f,1,1));
     }
 
