@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -7,6 +8,12 @@ public class GameManager : MonoBehaviour
 {
     private bool gameIsOver;
     private bool levelIsComplete;
+    private bool gameIsPaused;
+    public bool GameIsPaused {
+        get { return gameIsPaused; } 
+        private set { gameIsPaused = value; } 
+    }
+    
     public float restartDelay = 2f;
     public GameObject completeLevelUI;
     public GameObject failLevelUI;
@@ -37,6 +44,7 @@ public class GameManager : MonoBehaviour
 
     public void LoadMenu()
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene(0);
     }
 
@@ -106,20 +114,23 @@ public class GameManager : MonoBehaviour
         } 
     }
 
+    public void Pause()
+    {
+        Time.timeScale = 0f;
+        gameIsPaused = true;
+    }
+    public void Resume()
+    {
+        Time.timeScale = 1f;
+        gameIsPaused = false;
+    }
+
     // Update is called once per frame
     void Update()
     {
         if (Input.GetKey("r") || Input.GetKey(KeyCode.Return))
         {
             Restart();
-        }
-        if (Input.GetKey(KeyCode.Escape))
-        {
-            QuitApp();
-        }
-        if (Input.GetKey("f"))
-        {
-            LoadMenu();
         }
         #if UNITY_EDITOR
             if (Input.GetKey("c"))
