@@ -5028,6 +5028,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 398608953}
   m_PrefabAsset: {fileID: 0}
+--- !u!20 &1959896754 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 6838807133630184625, guid: 67a54e023ff32ae4b946ea300a04321b,
+    type: 3}
+  m_PrefabInstance: {fileID: 6838807132666991042}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2013013326 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 211019111974734182, guid: 2638636a816ff724cb54f4389277c8cd,
@@ -5353,6 +5359,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6782119328320101442, guid: 647a1f4c4da0ea04ba71e7b8f42753df,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6782119328663828040, guid: 647a1f4c4da0ea04ba71e7b8f42753df,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5463,6 +5474,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Animations
       objectReference: {fileID: 0}
+    - target: {fileID: 6782119328663828407, guid: 647a1f4c4da0ea04ba71e7b8f42753df,
+        type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 1959896754}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 647a1f4c4da0ea04ba71e7b8f42753df, type: 3}
 --- !u!1001 &4857252647849056901

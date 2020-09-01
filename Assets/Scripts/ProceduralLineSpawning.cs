@@ -5,12 +5,14 @@ using UnityEngine;
 public class ProceduralLineSpawning : MonoBehaviour
 {
     [Header("Initial")]
+    public Camera cameraForBGColor;
     public GameObject lineObjectToSpawn;
     public float levelSpeed;
     public float levelDuration;
     public float initialSpawnDelay;
 
     [Header("Continuous")]
+    public int currentLevel = 0;
     [Range(0.5f,10f)]
     public float continuousSpawnDelay;
     [Range(0f,1000f)]
@@ -55,6 +57,13 @@ public class ProceduralLineSpawning : MonoBehaviour
         Gizmos.DrawCube(new Vector3(transform.position.x, transform.position.y, transform.position.z + 1), new Vector3(1,1,1));
     }
 
+    private void ChangeBGAndFogColor()
+    {
+        Color newColor = Random.ColorHSV(0f, 1f, 0.5f, 0.75f, 0.5f, 0.75f);
+        cameraForBGColor.backgroundColor = newColor;
+        RenderSettings.fogColor = newColor;
+    }
+
     IEnumerator RepeatSpawning()
     {
         yield return new WaitForSeconds(initialSpawnDelay);
@@ -72,6 +81,15 @@ public class ProceduralLineSpawning : MonoBehaviour
 
         while (true)
         {
+            //New level
+            //Debug.Log("New level!");
+            currentLevel++;
+
+            if (currentLevel % 2 == 0)
+            {
+                ChangeBGAndFogColor();
+            }
+
             levelSpeed += additionalLevelSpeed;
             foreach (GameObject line in spawnedLines)
             {
@@ -95,10 +113,6 @@ public class ProceduralLineSpawning : MonoBehaviour
                 spawnedLines.Remove(tempLine);
                 //Debug.Log("Removed Line");
                 //Debug.Log("In list now: " + spawnedLines.Count);
-            }
-            else
-            {
-                //tempLine.GetComponent<ProceduralLine>().lineSpeed += 100;
             }
         }
 

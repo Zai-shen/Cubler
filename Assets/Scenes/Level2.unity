@@ -6636,6 +6636,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Animations
       objectReference: {fileID: 0}
+    - target: {fileID: 6782119328663828407, guid: 647a1f4c4da0ea04ba71e7b8f42753df,
+        type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 6838807132666991043}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 647a1f4c4da0ea04ba71e7b8f42753df, type: 3}
 --- !u!1 &1710347115 stripped
@@ -8517,6 +8522,12 @@ PrefabInstance:
       objectReference: {fileID: 497678686}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 67a54e023ff32ae4b946ea300a04321b, type: 3}
+--- !u!20 &6838807132666991043 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 6838807133630184625, guid: 67a54e023ff32ae4b946ea300a04321b,
+    type: 3}
+  m_PrefabInstance: {fileID: 6838807132666991042}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8199720696043441380
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -12,6 +12,7 @@ public class Score : MonoBehaviour
     public Text highScoreTxt;
     public Text HSIndicatorTxt;
     public Font HSHighlightFont;
+    public ParticleSystem HSParticleSystem;
     private float score;
     private bool procedural;
     private bool highlighted;
@@ -73,8 +74,12 @@ public class Score : MonoBehaviour
     {
         if (!highlighted)
         {
+            HSIndicatorTxt.GetComponent<Text>().text = "NEW HIGHSCORE";
             HSIndicatorTxt.GetComponent<Text>().font = HSHighlightFont;
             HSIndicatorTxt.GetComponent<Text>().fontSize = 30;
+
+            HSParticleSystem.gameObject.SetActive(true);
+
             highlighted = true;
         }
     }
