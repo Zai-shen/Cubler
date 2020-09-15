@@ -5,10 +5,23 @@ using System;
 public class AudioManager : MonoBehaviour
 {
     public Sound[] sounds;
-    private float volume;
+    public static AudioManager Instance { get { return instance; } }
+    private static AudioManager instance;
 
     private void Awake()
     {
+        if (instance != null && instance != this)
+        {
+            Destroy(this.gameObject);
+            return;
+        }
+        else
+        {
+            instance = this;
+        }
+
+        DontDestroyOnLoad(gameObject);
+
         AudioListener.volume = PlayerPrefs.GetFloat("Volume", 1);
         foreach (Sound snd in sounds)
         {
@@ -27,11 +40,39 @@ public class AudioManager : MonoBehaviour
         
         if (snd == null)
         {
-            Debug.Log("Sound: " + name + " not found!");
+            Debug.LogWarning("Sound: " + name + " not found!");
             return;
         }
 
         snd.source.Play();
+    }
+
+    public void PlayIfIsntAlreadyPlaying(string name)
+    {
+        Sound snd = Array.Find(sounds, sound => sound.name == name);
+        
+        if (!snd.source.isPlaying) {
+            Play(name);
+        }
+    }
+
+    public void StopAllSounds()
+    {
+        foreach (Sound playingSnd in sounds)
+        {
+            playingSnd.source.Stop();
+        }
+    }
+
+    public void StopAllSoundsBut(string name)
+    {
+        foreach (Sound playingSnd in sounds)
+        {
+            if (playingSnd.name != name)
+            {
+                playingSnd.source.Stop();
+            }
+        }
     }
 
     public void ChangeVolume(float cVolume)

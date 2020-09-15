@@ -21,6 +21,7 @@ public class PauseMenu : MonoBehaviour
         AudioListener.volume = PlayerPrefs.GetFloat("Volume", 0) / 2;
 
         gameManager.Pause();
+        Cursor.visible = true;
         pauseMenuUI.SetActive(true);
     }
 
@@ -31,6 +32,7 @@ public class PauseMenu : MonoBehaviour
         AudioListener.volume = PlayerPrefs.GetFloat("Volume", 0);
 
         gameManager.Resume();
+        Cursor.visible = false;
         pauseMenuUI.SetActive(false);
     }
 

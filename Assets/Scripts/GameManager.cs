@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
     public float restartDelay = 2f;
     public GameObject completeLevelUI;
     public GameObject failLevelUI;
-    public AudioManager audioManager;
+    private AudioManager audioManager;
 
     public void CompleteLevel()
     {
@@ -82,34 +82,48 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (audioManager == null)
+        {
+            audioManager = FindObjectOfType<AudioManager>();
+        }
+
+        Cursor.visible = false;
+
         switch (SceneManager.GetActiveScene().buildIndex)
         {
             case 0:
                 Debug.Log("Menu");
-                audioManager.Play("Lvl0");
+                Cursor.visible = true;
+                audioManager.StopAllSounds();
+                audioManager.PlayIfIsntAlreadyPlaying("Lvl0");
                 break;
             case 1:
                 Debug.Log("Lvl1");
-                audioManager.Play("Lvl1");
+                audioManager.StopAllSoundsBut("Lvl1");
+                audioManager.PlayIfIsntAlreadyPlaying("Lvl1");
                 break;
             case 2:
                 Debug.Log("Lvl2");
-                audioManager.Play("Lvl2");
+                audioManager.StopAllSoundsBut("Lvl2");
+                audioManager.PlayIfIsntAlreadyPlaying("Lvl2"); 
                 break;
             case 3:
                 Debug.Log("Lvl3");
-                audioManager.Play("Lvl3");
+                audioManager.StopAllSoundsBut("Lvl3");
+                audioManager.PlayIfIsntAlreadyPlaying("Lvl3"); 
                 break;
             case 4:
                 Debug.Log("Credits");
-                audioManager.Play("Lvl0");
+                audioManager.StopAllSoundsBut("Lvl0");
+                audioManager.PlayIfIsntAlreadyPlaying("Lvl0"); 
                 break;
             case 5:
                 Debug.Log("ProceduralLevel");
-                audioManager.Play("ProceduralLevel");
+                audioManager.StopAllSoundsBut("ProceduralLevel");
+                audioManager.PlayIfIsntAlreadyPlaying("ProceduralLevel"); 
                 break;
             default:
-                Debug.Log("Unknown");
+                Debug.LogWarning("Unknown stage");
                 break;
         } 
     }
