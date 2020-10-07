@@ -1,8 +1,8 @@
 # Project
 
-Cubler (a wordplay between Cube and Hurdler) is a simple 3D game I made with Unity, for better understanding of Game Engines. 
+Cubler (a wordplay between Cube and Hurdler) is the first game I developed, a simple 3D game produced with Unity, for better understanding of Game Engines. 
 
-![Cubler Screenshot](/Assets/Imgs/Cubler_512x512.png)
+<img alt="Cubler" src="Assets/Imgs/Cubler.gif"/>
 
 ## Redistribution
 
